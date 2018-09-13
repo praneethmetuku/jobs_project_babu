@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+<!DOCTYPE html>
+
+{% block content %}
+
+<head>
+
+    <style>
+
+    body{
+         background-image: url('{% static "images/bengulur1.jpg" %}');
+         }
+    #puneh{
+        color: red;
+        font-style: italic;
+        font-size: 49px;
+        text-align: center;
+    }
+    #hydtable{
+        color: black;
+        border: 2px solid;
+        text-align: center;
+        border-left: 6px solid red;
+        background-color: lightgrey;
+    }
+    #tr{
+        border: 2px solid ;
+        border-color: hsl(89, 43%, 51%);
+    }
+    </style>
+</head>
+
+
+<br>
+<h1 id="puneh"> Welcome to the Benguluru Jobs</h1>
+
+<div class="blrjobs">
+
+    {% if punejobs %}
+    <table id='hydtable'>
+        <thead id="tq">
+            <th>Date</th>
+            <th>Company Name</th>
+            <th>Job Title</th>
+            <th>Job Eligibility</th>
+            <th>Company Email</th>
+        </thead>
+         {% for i in punejobs %}
+        <tr id="tr">
+            <td>{{ i.date }}</td>
+            <td>{{ i.company }}</td>
+            <td>{{ i.title }}</td>
+            <td>{{ i.eligibility }}</td>
+            <td> {{ i.email }}</td>
+
+        </tr>
+         {% endfor %}
+    </table>
+
+</div>
+
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+<!DOCTYPE html>
+{% block content %}
+
+<head>
+
+    <style>
+
+    body{
+         background-image: url('{% static "images/chennai1.jpg" %}');
+         }
+    #chennaih{
+        color: red;
+        font-style: italic;
+        font-size: 49px;
+        text-align: center;
+    }
+    #hydtable{
+        color: black;
+        border: 2px solid;
+        text-align: center;
+        border-left: 6px solid red;
+        background-color: lightgrey;
+    }
+    #tr{
+        border: 2px solid ;
+        border-color: hsl(89, 43%, 51%);
+    }
+
+    </style>
+</head>
+
+<br>
+<h1 id="chennaih"> Welcome to the Chennai Jobs</h1>
+
+<div class="chennaijobs">
+
+    {% if chennaijobs %}
+    <table id='hydtable'>
+        <thead>
+            <th>Date</th>
+            <th>Company Name</th>
+            <th>Job Title</th>
+            <th>Job Eligibility</th>
+            <th>Company Email</th>
+        </thead>
+         {% for i in chennaijobs %}
+        <tr id="tr">
+            <td>{{ i.date }}</td>
+            <td>{{ i.company }}</td>
+            <td>{{ i.title }}</td>
+            <td>{{ i.eligibility }}</td>
+            <td> {{ i.email }}</td>
+
+        </tr>
+         {% endfor %}
+    </table>
+
+</div>
+
+{% endif %}
+
+
+{% endblock %}

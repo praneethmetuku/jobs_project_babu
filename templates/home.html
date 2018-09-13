@@ -1,0 +1,119 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+{% extends "base.html" %}
+
+{% block content %}
+
+<head>
+	<style>
+	.button {
+		position: fixed;
+		text-align: center;
+		font-size: 42px;
+		font-family: 'Raleway', sans-serif;
+		color: hsl(220, 80%, 50%);
+		width: 350px;
+		height: 100px;
+		margin-top: calc(50vh - 75px);
+		margin-left: calc(50vw - 175px);
+
+		border-radius: 30px;
+		text-shadow:
+			0px 5px hsl(220, 80%, 30%),
+			0px 10px 10px #0003;
+		box-shadow:
+			0px 0px 0px 15px hsl(330, 80%, 50%),
+			0px 10px 0px 15px hsl(330, 80%, 40%),
+			0px 20px 20px 15px #0003;
+		cursor: pointer;
+		border-radius: 100px 30px 100px 30px;
+
+	}
+
+	.button p {
+		margin-top: 20px;
+		transform: rotate(-3deg);
+	}
+
+	.button:hover {
+		animation: .8s morph ease infinite;
+	}
+
+	.button:hover p {
+		animation: .8s rot ease infinite;
+	}
+
+	@keyframes morph {
+		0% {
+			border-radius: 100px 30px 100px 30px;
+		} 50% {
+			border-radius: 30px 100px 30px 100px;
+		} 100% {
+			border-radius: 100px 30px 100px 30px;
+		}
+	}
+
+	@keyframes rot {
+		0% {
+			transform: rotate(-3deg);
+		} 50% {
+			transform: rotate(3deg);
+		} 100% {
+			transform: rotate(-3deg);
+		}
+	}
+
+
+	</style>
+</head>
+
+{% if user.is_authenticated %}
+
+<div class="container">
+	<div class="row">
+		<h1> Continues Job Updates for every hour</h1>
+	</div>
+<br>
+<br>
+
+    <div class="row">
+
+    <div class="col-md-6">
+
+<a href="{% url 'hydjobs' %}"><button type="button" class="btn btn-success ribbon">HydJobs</button></a>
+
+
+<a href="{% url 'chennaijobs' %}"><button type="button" class="btn btn-info ribbon">ChennaiJobs</button></a>
+
+
+<a href="{% url 'punejobs' %}"><button type="button" class="btn btn-warning ribbon">Bangalorejobs</button></a>
+
+<a href="{% url 'blrjobs' %}"><button type="button" class="btn btn-danger ribbon">PuneJobs</button></a>
+
+
+</div>
+    </div>
+</div>
+{% else %}
+
+    <h2>𝙋𝙡𝙚𝙖𝙨𝙚! 𝕃𝕠𝕘𝕚𝕟 𝙖𝙣𝙙 𝙘𝙤𝙣𝙩𝙞𝙣𝙪𝙚 𝙩𝙤 𝙩𝙝𝙚 𝙝𝙤𝙢𝙚𝙥𝙖𝙜𝙚</h2>
+
+
+       <button type="button" name="button"><a class="nav-link" href="{% url 'login' %}">Login</a>
+</button>
+
+             <br>
+			 <br>
+				<h1>𝙄𝙛 𝙮𝙤𝙪 𝙙𝙤𝙣𝙩 𝙝𝙖𝙫𝙚 𝙖𝙣𝙮 𝙪𝙨𝙚𝙧𝙣𝙖𝙢𝙚 𝘿𝙖𝙧𝙡𝙞𝙣𝙜 𝙋𝙡𝙚𝙖𝙨𝙚! 𝙍𝙚𝙜𝙞𝙨𝙩𝙚𝙧 𝙗𝙚𝙡𝙤𝙬</h1>
+
+
+
+
+				  <button class='button' name="button">
+					  <a class="nav-link" href="{% url 'register' %}">Register here!</a></button>
+
+
+{% endif %}
+
+{% endblock %}
